@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./team.css";
 import { Header } from "../../components/header/header";
 import { TeamMember as TeamMemberModel } from "../../config/types";
 import { API_URL } from "../../config/api";
@@ -81,9 +82,9 @@ export class Team extends Component<{}, TeamState> {
           <div>{error.message}</div>
         ) : (
           // all is well, nice! show team members then
-          <div>
+          <div className="team__grid">
             {teamMembers.map((teamMember: TeamMemberModel, index: number) => (
-              <div key={`team-member-${index}`}>
+              <div className="team__item" key={`team-member-${index}`}>
                 <TeamMember teamMember={teamMember} />
               </div>
             ))}
