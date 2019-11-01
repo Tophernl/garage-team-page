@@ -1,0 +1,8 @@
+h1 {
+  font-family: "Nunito";
+  font-size: 10em;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-secondary);
+}
