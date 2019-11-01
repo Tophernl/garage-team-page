@@ -3,6 +3,7 @@ import { Header } from "../../components/header/header";
 import { TeamMember } from "../../config/types";
 import { API_URL } from "../../config/api";
 import { Locations } from "../../config/enums";
+import Loader from "../../components/loader/loader";
 
 type TeamState = {
   teamMembers: TeamMember[];
@@ -51,15 +52,21 @@ export class Team extends Component<{}, TeamState> {
   };
 
   render() {
-    const { teamMembers } = this.state;
+    const { teamMembers, isLoading } = this.state;
 
     return (
       <div className="team">
         <Header title="Team" />
 
-        {teamMembers.map((teamMember: TeamMember, index: number) => (
-          <div key={`member-${index}`}>{teamMember.name}</div>
-        ))}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div>
+            {teamMembers.map((teamMember: TeamMember, index: number) => (
+              <div key={`member-${index}`}>{teamMember.name}</div>
+            ))}
+          </div>
+        )}
       </div>
     );
   }
