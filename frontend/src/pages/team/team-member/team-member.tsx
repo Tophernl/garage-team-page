@@ -3,6 +3,7 @@ import "./team-member.css";
 import { TeamMember as TeamMemberModel } from "../../../config/types";
 import { Tag } from "./tag/tag";
 import Loader from "../../../components/loader/loader";
+import PlusIcon from "../../../assets/images/plus-icon.svg";
 
 type TeamMemberProps = {
   teamMember: TeamMemberModel;
@@ -39,6 +40,11 @@ export class TeamMember extends Component<TeamMemberProps, TeamMemberState> {
     // Add random value to trigger unique image
     if (image.includes("https://loremflickr.com")) {
       imageUrl = `${image}?random=${name}`;
+    }
+
+    //exception for plus icon image
+    if (image.includes("plusIcon")) {
+      imageUrl = PlusIcon;
     }
 
     localImage.src = imageUrl;

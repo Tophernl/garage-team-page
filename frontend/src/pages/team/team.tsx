@@ -46,6 +46,21 @@ export class Team extends Component<{}, TeamState> {
       })
       .then(data => this.setState({ teamMembers: data, isLoading: false }))
       .catch(error => this.setState({ error: error, isLoading: false }));
+
+    this.addHiringMember();
+  };
+
+  addHiringMember = () => {
+    const yourName: TeamMemberModel = {
+      name: "Your name",
+      role: "We're hiring",
+      tags: ["perspective", "grow"],
+      location: "Your name",
+      image: "plusIcon"
+    };
+    this.setState((prevState: TeamState) => ({
+      teamMembers: prevState.teamMembers.concat(yourName)
+    }));
   };
 
   getLocations = () => {
