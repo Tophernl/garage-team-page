@@ -52,15 +52,18 @@ export class Team extends Component<{}, TeamState> {
   };
 
   render() {
-    const { teamMembers, isLoading } = this.state;
+    const { teamMembers, isLoading, error } = this.state;
 
     return (
       <div className="team">
         <Header title="Team" />
 
-        {isLoading ? (
+        {isLoading ? ( //Check if isLoading state is true, show loader if true
           <Loader />
+        ) : error ? ( // isLoading state is false, check if an error was thrown
+          <div>{error.message}</div>
         ) : (
+          // all is well, nice! show team members then
           <div>
             {teamMembers.map((teamMember: TeamMember, index: number) => (
               <div key={`member-${index}`}>{teamMember.name}</div>
