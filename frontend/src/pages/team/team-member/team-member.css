@@ -1,0 +1,78 @@
+.team-member {
+  max-width: 200px;
+  background-color: var(--color-secondary);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.team-member__picture {
+  position: relative;
+  text-align: center;
+  background-image: url(../../../assets/images/person.png);
+}
+
+.team-member__picture > div:first-child {
+  width: 200px;
+  height: 200px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+}
+
+.team-member__loader {
+  width: 200px;
+  height: 200px;
+  background-color: var(--color-secondary);
+}
+
+.team-member__name {
+  opacity: 0;
+  font-size: 2em;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.team-member__name > div:first-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.team-member__name:hover {
+  opacity: 1;
+}
+
+.team-member__details {
+  padding: 1em;
+}
+
+.team-member__location {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.team-member__role {
+  font-size: 1em;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.team-member__tags {
+  font-size: 0.8em;
+  font-weight: 300;
+}

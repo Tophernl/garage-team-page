@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Header } from "../../components/header/header";
-import { TeamMember } from "../../config/types";
+import { TeamMember as TeamMemberModel } from "../../config/types";
 import { API_URL } from "../../config/api";
 import { Locations } from "../../config/enums";
 import Loader from "../../components/loader/loader";
+import TeamMember from "./team-member/team-member";
+import PlusIcon from "../../assets/images/plus-icon.svg";
 
 type TeamState = {
-  teamMembers: TeamMember[];
+  teamMembers: TeamMemberModel[];
   locations: string[];
   isLoading: boolean;
   error: null | Error;
@@ -29,10 +31,10 @@ export class Team extends Component<{}, TeamState> {
     this.getLocations();
   }
 
-  getTeamMembers = () => {
+  getTeamMembers = async () => {
     this.setState({ isLoading: true });
 
-    fetch(API_URL.GET_TEAM_MEMBERS)
+    await fetch(API_URL.GET_TEAM_MEMBERS)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -65,8 +67,10 @@ export class Team extends Component<{}, TeamState> {
         ) : (
           // all is well, nice! show team members then
           <div>
-            {teamMembers.map((teamMember: TeamMember, index: number) => (
-              <div key={`member-${index}`}>{teamMember.name}</div>
+            {teamMembers.map((teamMember: TeamMemberModel, index: number) => (
+              <div key={`team-member-${index}`}>
+                <TeamMember teamMember={teamMember} />
+              </div>
             ))}
           </div>
         )}
