@@ -72,10 +72,10 @@ export class Team extends Component<{}, TeamState> {
   teamMembersFiltered = () => {
     const { selectedLocation, teamMembers } = this.state;
     if (selectedLocation !== "All") {
-
-      return this.state.teamMembers.filter(
+      return teamMembers.filter(
         (teamMember: TeamMemberModel) =>
-          teamMember.location === selectedLocation.toLowerCase()
+          teamMember.location === selectedLocation.toLowerCase() ||
+          teamMember.location === "Your name"
       );
     } else {
       return this.state.teamMembers;
