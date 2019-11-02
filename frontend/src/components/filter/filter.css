@@ -1,14 +1,36 @@
 .filter {
+  --width-filter: 600px;
   margin: 100px auto;
-  height: 40px;
-  width: 600px;
-  display: flex;
+  width: var(--width-filter);
   border: 2px solid var(--color-primary);
   border-radius: 15px;
-  align-items: center;
+}
+
+.filter__items {
+  display: flex;
 }
 
 .filter__item {
   flex: 1 1 0px;
-  text-align: center;
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter__item:hover:not(.filter__item--active) {
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-primary);
+}
+
+.filter__indicator {
+  position: absolute;
+  width: calc(var(--width-filter) / 4);
+  background: var(--color-primary);
+  height: 40px;
+  border-radius: 15px;
+  margin: 0px -2px;
+  transition: all 0.3s cubic-bezier(0.85, -0.27, 0.18, 1.32);
+  z-index: -1;
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./filter.css";
-import FilterOption from "./filter-option/filter-option";
 
 type FilterProps = {
   options: string[];
@@ -9,6 +8,7 @@ type FilterProps = {
 
 type FilterState = {
   selected: string;
+  selectedIndex: number;
 };
 
 export class Filter extends Component<FilterProps, FilterState> {
@@ -16,30 +16,42 @@ export class Filter extends Component<FilterProps, FilterState> {
     super(props);
 
     this.state = {
-      selected: this.props.options[0]
+      selected: this.props.options[0],
+      selectedIndex: 0
     };
   }
 
-  onFilterOptionclick = (filterOptionName: string) => {
-    this.setState({ selected: filterOptionName });
+  onFilterOptionclick = (filterOptionName: string, index: number) => {
+    this.setState({ selected: filterOptionName, selectedIndex: index });
     this.props.callbackFunction(filterOptionName);
   };
 
   render() {
     const { options } = this.props;
-    const { selected } = this.state;
+    const { selected, selectedIndex } = this.state;
 
     return (
       <div className="filter">
-        {options.map((option: string, index: number) => (
-          <div className="filter__item" key={`filter-option-${index}`}>
-            <FilterOption
-              name={option}
-              active={option === selected}
-              callbackFunction={this.onFilterOptionclick}
-            ></FilterOption>
-          </div>
-        ))}
+        <div className="filter__items">
+          {options.map((option: string, index: number) => (
+            <span
+              className={
+                "filter__item " +
+                (option === selected
+                  ? "filter__item--active"
+                  : "filter__item--inactive")
+              }
+              key={`filter-option-${index}`}
+              onClick={() => this.onFilterOptionclick(option, index)}
+            >
+              {option}
+            </span>
+          ))}
+          <div
+            className="filter__indicator"
+            style={{ transform: `translateX(${selectedIndex * 101}%)` }}
+          ></div>
+        </div>
       </div>
     );
   }
