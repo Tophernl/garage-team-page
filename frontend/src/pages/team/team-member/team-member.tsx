@@ -30,6 +30,12 @@ export class TeamMember extends Component<TeamMemberProps, TeamMemberState> {
     this.getImage();
   }
 
+  componentDidUpdate(prevProps: TeamMemberProps) {
+    if (prevProps.teamMember !== this.props.teamMember) {
+      this.getImage();
+    }
+  }
+
   getImage = () => {
     const { image, name } = this.props.teamMember;
     this.setState({ isLoading: true });
