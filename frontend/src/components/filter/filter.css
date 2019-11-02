@@ -1,0 +1,14 @@
+.filter {
+  margin: 100px auto;
+  height: 40px;
+  width: 600px;
+  display: flex;
+  border: 2px solid var(--color-primary);
+  border-radius: 15px;
+  align-items: center;
+}
+
+.filter__item {
+  flex: 1 1 0px;
+  text-align: center;
+}
