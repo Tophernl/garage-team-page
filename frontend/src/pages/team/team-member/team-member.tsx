@@ -58,7 +58,6 @@ export class TeamMember extends Component<TeamMemberProps, TeamMemberState> {
 
   handleImageError = (localImage: HTMLImageElement) => {
     this.setState({ isLoading: false });
-    console.log("error getting image: ", localImage);
   };
 
   render() {

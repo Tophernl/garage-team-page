@@ -67,14 +67,11 @@ export class Team extends Component<{}, TeamState> {
 
   onFilterAction = (selectedLocation: string) => {
     this.setState({ selectedLocation: selectedLocation });
-    console.log(selectedLocation);
-    console.log(this.state.selectedLocation);
   };
 
   teamMembersFiltered = () => {
     const { selectedLocation, teamMembers } = this.state;
     if (selectedLocation !== "All") {
-      console.log(this.state.teamMembers, selectedLocation);
 
       return this.state.teamMembers.filter(
         (teamMember: TeamMemberModel) =>
